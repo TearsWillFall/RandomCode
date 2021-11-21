@@ -197,10 +197,10 @@ install_tools=function(){
   manta=system.file("tools","manta-1.6.0.centos6_x86_64.tar.bz2", package = "RandomCode")
   bcftools=system.file("tools","bcftools-1.14.tar.bz2", package = "RandomCode")
   htslib=system.file("tools","htslib-1.14.tar.bz2", package = "RandomCode")
-  system(paste0("tar ",strelka, " && mv ",strelka, strsplit(strelka,"-")[[1]][1]))
-  system(paste0("tar ",manta, " && mv ",manta, strsplit(manta,"-")[[1]][1]))
-  system(paste0("tar ",bcftools, " && mv ",bcftools, strsplit(bcftools,"-")[[1]][1]))
-  system(paste0("tar ",htslib, " && mv ",htslib, strsplit(htslib,"-")[[1]][1]))
+  system(paste0("tar -xfv ",strelka, " && mv ",strelka, strsplit(strelka,"-")[[1]][1]))
+  system(paste0("tar -xfv ",manta, " && mv ",manta, strsplit(manta,"-")[[1]][1]))
+  system(paste0("tar -xfv ",bcftools, " && mv ",bcftools, strsplit(bcftools,"-")[[1]][1]))
+  system(paste0("tar -xfv ",htslib, " && mv ",htslib, strsplit(htslib,"-")[[1]][1]))
 
   system(paste0("cd ",strsplit(bcftools,"-")[[1]][1],"; ./configure --prefix=",
   strsplit(bcftools,"-")[[1]][1],"/bin",";make;make install"))
