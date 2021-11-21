@@ -14,7 +14,7 @@
 #' @param verbose [DEFAULT==FALSE] Enables progress messages.
 #' @export
 
-call_sv_manta=function(bin_path=system.file("inst/tools/manta/bin", "configManta.py", package = "RandomCode"),tumor_bam="",
+call_sv_manta=function(bin_path=system.file("tools/manta/bin", "configManta.py", package = "RandomCode"),tumor_bam="",
 normal_bam="",ref_genome="",output_dir="",patient_id="",verbose=FALSE,targeted=FALSE,threads=3){
 
   if(bin_path==""){
@@ -106,12 +106,12 @@ normal_bam="",ref_genome="",output_dir="",patient_id="",verbose=FALSE,targeted=F
 #' @param verbose [DEFAULT==FALSE] Enables progress messages.
 #' @export
 
-call_variants_strelka=function(bin_path=system.file("inst/tools/strelka/bin",
+call_variants_strelka=function(bin_path=system.file("tools/strelka/bin",
 "configureStrelkaSomaticWorkflow.py", package = "RandomCode"),
-bin_path2=system.file("inst/tools/manta/bin", "configManta.py", package = "RandomCode"),
-bin_path3=system.file("inst/tools/bcftools/bin", "bcftools", package = "RandomCode"),
-bin_path4=system.file("inst/tools/htslib/bin", "bgzip", package = "RandomCode"),
-bin_path5=system.file("inst/tools/htslib/bin", "tabix", package = "RandomCode"),tumor_bam="",normal_bam="",ref_genome="",output_dir="",
+bin_path2=system.file("tools/manta/bin", "configManta.py", package = "RandomCode"),
+bin_path3=system.file("tools/bcftools/bin", "bcftools", package = "RandomCode"),
+bin_path4=system.file("tools/htslib/bin", "bgzip", package = "RandomCode"),
+bin_path5=system.file("tools/htslib/bin", "tabix", package = "RandomCode"),tumor_bam="",normal_bam="",ref_genome="",output_dir="",
 patient_id="",verbose=FALSE,targeted=FALSE,threads=3,exec_options="local"){
 
 
