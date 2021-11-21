@@ -70,9 +70,9 @@ intersect_sample_name=function(file_path="",file_path2=""){
 #' @export
 
 
-vcf_filter_variants=function(unfil_vcf="",bin_path=system.file("inst/tools/bcftools/bin","tabix",
-package = "RandomCode"),bin_path2=system.file("inst/tools/htslib/bin","bgzip",
-package = "RandomCode"),bin_path3=system.file("inst/tools/htslib/bin","tabix",
+vcf_filter_variants=function(unfil_vcf="",bin_path=system.file("tools/bcftools/bin","tabix",
+package = "RandomCode"),bin_path2=system.file("tools/htslib/bin","bgzip",
+package = "RandomCode"),bin_path3=system.file("tools/htslib/bin","tabix",
 package = "RandomCode"),qual=30,mq=40,state="",ref="",type="",filter="",verbose=FALSE,output_dir=""){
 
   sep="/"
@@ -152,7 +152,7 @@ package = "RandomCode"),qual=30,mq=40,state="",ref="",type="",filter="",verbose=
 #' @param verbose [OPTIONAL] Enables progress messages. Default False.
 #' @export
 
-tab_indx=function(bin_path=system.file("inst/tools/htslib/bin","tabix",
+tab_indx=function(bin_path=system.file("tools/htslib/bin","tabix",
 package = "RandomCode"),file="",verbose=FALSE){
 
   if (verbose){
@@ -174,7 +174,7 @@ package = "RandomCode"),file="",verbose=FALSE){
 
 
 
-bgzip=function(bin_path=system.file("inst/tools/htslib/bin","bgzip",
+bgzip=function(bin_path=system.file("tools/htslib/bin","bgzip",
 package = "RandomCode"),file="",verbose=FALSE){
   if (verbose){
     print(paste0(bin_path," -f ",file))
@@ -193,10 +193,10 @@ package = "RandomCode"),file="",verbose=FALSE){
 
 install_tools=function(){
 
-  strelka=system.file("inst/tools","strelka-2.9.10.centos6_x86_64.tar.bz2", package = "RandomCode")
-  manta=system.file("inst/tools","manta-1.6.0.centos6_x86_64.tar.bz2", package = "RandomCode")
-  bcftools=system.file("inst/tools","bcftools-1.14.tar.bz2", package = "RandomCode")
-  htslib=system.file("inst/tools","htslib-1.14.tar.bz2", package = "RandomCode")
+  strelka=system.file("tools","strelka-2.9.10.centos6_x86_64.tar.bz2", package = "RandomCode")
+  manta=system.file("tools","manta-1.6.0.centos6_x86_64.tar.bz2", package = "RandomCode")
+  bcftools=system.file("tools","bcftools-1.14.tar.bz2", package = "RandomCode")
+  htslib=system.file("tools","htslib-1.14.tar.bz2", package = "RandomCode")
   system(paste0("tar -xzvf ",strelka, " && mv ",strelka, strsplit(strelka,"-")[[1]][1]))
   system(paste0("tar -xzvf ",manta, " && mv ",manta, strsplit(manta,"-")[[1]][1]))
   system(paste0("tar -xzvf ",bcftools, " && mv ",bcftools, strsplit(bcftools,"-")[[1]][1]))
