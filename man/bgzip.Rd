@@ -5,7 +5,7 @@
 \title{Bgzips a VCF file}
 \usage{
 bgzip(
-  bin_path = system.file("htslib/bin", "bgzip", package = "RandomCode"),
+  bin_path = system.file("tools/htslib/bin", "bgzip", package = "RandomCode"),
   file = "",
   verbose = FALSE
 )

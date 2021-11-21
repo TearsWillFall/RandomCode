@@ -5,13 +5,7 @@
 \title{Index tab separated genomic regions}
 \usage{
 tab_indx(
-  bin_path = system.file("htslib/bin", "tabix", package = "RandomCode"),
-  file = "",
-  verbose = FALSE
-)
-
-tab_indx(
-  bin_path = system.file("htslib/bin", "tabix", package = "RandomCode"),
+  bin_path = system.file("tools/htslib/bin", "tabix", package = "RandomCode"),
   file = "",
   verbose = FALSE
 )
@@ -24,7 +18,5 @@ tab_indx(
 \item{verbose}{\link{OPTIONAL} Enables progress messages. Default False.}
 }
 \description{
-This function takes a .vcf.bgz tab separated genomic region file and generates an index for it
-
 This function takes a .vcf.bgz tab separated genomic region file and generates an index for it
 }

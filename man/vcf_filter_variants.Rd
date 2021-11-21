@@ -6,9 +6,9 @@
 \usage{
 vcf_filter_variants(
   unfil_vcf = "",
-  bin_path = "tools/bcftools/bcftools",
-  bin_path2 = "tools/htslib/bgzip",
-  bin_path3 = "tools/htslib/tabix",
+  bin_path = system.file("tools/bcftools/bin", "tabix", package = "RandomCode"),
+  bin_path2 = system.file("tools/htslib/bin", "bgzip", package = "RandomCode"),
+  bin_path3 = system.file("tools/htslib/bin", "tabix", package = "RandomCode"),
   qual = 30,
   mq = 40,
   state = "",
