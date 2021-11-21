@@ -70,9 +70,10 @@ intersect_sample_name=function(file_path="",file_path2=""){
 #' @export
 
 
-vcf_filter_variants=function(unfil_vcf="",bin_path="tools/bcftools/bcftools",
-bin_path2="tools/htslib/bgzip",bin_path3="tools/htslib/tabix",
-qual=30,mq=40,state="",ref="",type="",filter="",verbose=FALSE,output_dir=""){
+vcf_filter_variants=function(unfil_vcf="",bin_path=system.file("tools/bcftools/bin","tabix",
+package = "RandomCode"),bin_path2=system.file("tools/htslib/bin","bgzip",
+package = "RandomCode"),bin_path3=system.file("tools/htslib/bin","tabix",
+package = "RandomCode"),qual=30,mq=40,state="",ref="",type="",filter="",verbose=FALSE,output_dir=""){
 
   sep="/"
   if(output_dir==""){
@@ -151,7 +152,7 @@ qual=30,mq=40,state="",ref="",type="",filter="",verbose=FALSE,output_dir=""){
 #' @param verbose [OPTIONAL] Enables progress messages. Default False.
 #' @export
 
-tab_indx=function(bin_path=system.file("htslib/bin","htslib",
+tab_indx=function(bin_path=system.file("tools/htslib/bin","tabix",
 package = "RandomCode"),file="",verbose=FALSE){
 
   if (verbose){
@@ -160,24 +161,6 @@ package = "RandomCode"),file="",verbose=FALSE){
   system(paste0(bin_path," -fp vcf ",file))
 }
 
-
-#' Index tab separated genomic regions
-#'
-#' This function takes a .vcf.bgz tab separated genomic region file and generates an index for it
-#'
-#' @param bin_path [REQUIRED] Path to bcftools binary. Default tools/htslib/tabix.
-#' @param file [REQUIRED] Path to VCF file to index.
-#' @param verbose [OPTIONAL] Enables progress messages. Default False.
-#' @export
-
-tab_indx=function(bin_path=system.file("htslib/bin","tabix",
-package = "RandomCode"),file="",verbose=FALSE){
-
-  if (verbose){
-    print(paste0(bin_path," -fp vcf",file))
-  }
-  system(paste0(bin_path," -fp vcf ",file))
-}
 
 
 #' Bgzips a VCF file
@@ -191,13 +174,20 @@ package = "RandomCode"),file="",verbose=FALSE){
 
 
 
-bgzip=function(bin_path=system.file("htslib/bin","bgzip",
+bgzip=function(bin_path=system.file("tools/htslib/bin","bgzip",
 package = "RandomCode"),file="",verbose=FALSE){
   if (verbose){
     print(paste0(bin_path," -f ",file))
   }
   system(paste0(bin_path," -f ",file))
 }
+
+
+#' Install all tools locally
+#'
+#' This function will install all required tools
+#'
+#' @export
 
 
 
