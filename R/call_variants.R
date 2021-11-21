@@ -17,6 +17,10 @@
 call_sv_manta=function(bin_path=system.file("tools/manta/bin", "configManta.py", package = "RandomCode"),tumor_bam="",
 normal_bam="",ref_genome="",output_dir="",patient_id="",verbose=FALSE,targeted=FALSE,threads=3){
 
+  if(bin_path=""){
+    stop("Perhaps forgot to call RandomCode::install_tools() first?")
+  }
+
   sep="/"
   if(output_dir==""){
     sep=""
@@ -106,9 +110,14 @@ call_variants_strelka=function(bin_path=system.file("tools/strelka/bin",
 "configureStrelkaSomaticWorkflow.py", package = "RandomCode"),
 bin_path2=system.file("tools/manta/bin", "configManta.py", package = "RandomCode"),
 bin_path3=system.file("tools/bcftools/bin", "bcftools", package = "RandomCode"),
-bin_path4=system.file("tools/bcftools/bin", "bcftools", package = "RandomCode"),
-bin_path5="tools/htslib/tabix",tumor_bam="",normal_bam="",ref_genome="",output_dir="",
+bin_path4=system.file("tools/htslib/bin", "bgzip", package = "RandomCode"),
+bin_path5=system.file("tools/htslib/bin", "tabix", package = "RandomCode"),tumor_bam="",normal_bam="",ref_genome="",output_dir="",
 patient_id="",verbose=FALSE,targeted=FALSE,threads=3,exec_options="local"){
+
+
+  if(bin_path=""){
+    stop("Perhaps forgot to call RandomCode::install_tools() first?")
+  }
 
   sep="/"
   if(output_dir==""){
