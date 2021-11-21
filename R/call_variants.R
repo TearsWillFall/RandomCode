@@ -17,7 +17,7 @@
 call_sv_manta=function(bin_path=system.file("tools/manta/bin", "configManta.py", package = "RandomCode"),tumor_bam="",
 normal_bam="",ref_genome="",output_dir="",patient_id="",verbose=FALSE,targeted=FALSE,threads=3){
 
-  if(bin_path=""){
+  if(bin_path==""){
     stop("Perhaps forgot to call RandomCode::install_tools() first?")
   }
 
@@ -115,7 +115,7 @@ bin_path5=system.file("tools/htslib/bin", "tabix", package = "RandomCode"),tumor
 patient_id="",verbose=FALSE,targeted=FALSE,threads=3,exec_options="local"){
 
 
-  if(bin_path=""){
+  if(bin_path==""){
     stop("Perhaps forgot to call RandomCode::install_tools() first?")
   }
 
