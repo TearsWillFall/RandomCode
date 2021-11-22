@@ -214,6 +214,6 @@ install_tools=function(){
   system(paste0("cd ",strsplit(bcftools,"-")[[1]][1],"; ./configure --prefix=",
   strsplit(bcftools,"-")[[1]][1],"/bin",";make;make install"))
 
-  system(paste0("cd ",strsplit(vep,"-")[[1]][1],"; ./perl INSTALL.pl"))
+  system(paste0("cd ",strsplit(vep,"-")[[1]][1],"; ./INSTALL.pl"))
 
 }
