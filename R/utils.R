@@ -189,23 +189,29 @@ package = "RandomCode"),file="",verbose=FALSE){
 #'
 #' @export
 
-
-
 install_tools=function(){
+
 
   strelka=system.file("tools","strelka-2.9.10.centos6_x86_64.tar.bz2", package = "RandomCode")
   manta=system.file("tools","manta-1.6.0.centos6_x86_64.tar.bz2", package = "RandomCode")
   bcftools=system.file("tools","bcftools-1.14.tar.bz2", package = "RandomCode")
   htslib=system.file("tools","htslib-1.14.tar.bz2", package = "RandomCode")
-  system(paste0("tar -xvf ",strelka, " && mv ",strelka, strsplit(strelka,"-")[[1]][1]))
-  system(paste0("tar -xvf ",manta, " && mv ",manta, strsplit(manta,"-")[[1]][1]))
-  system(paste0("tar -xvf ",bcftools, " && mv ",bcftools, strsplit(bcftools,"-")[[1]][1]))
-  system(paste0("tar -xvf ",htslib, " && mv ",htslib, strsplit(htslib,"-")[[1]][1]))
+  vep=system.file("tools","ensembl-vep-release-104.3.tar.gz", package = "RandomCode")
+  
+  system(paste0("mkdir ",strsplit(strelka,"-")[[1]][1],";tar -xvf ",strelka ," --strip 1 --directory ", strsplit(strelka,"-")[[1]][1]))
+  system(paste0("mkdir ",strsplit(manta,"-")[[1]][1],";tar -xvf ",manta ," --strip 1 --directory ", strsplit(manta,"-")[[1]][1]))
+  system(paste0("mkdir ",strsplit(bcftools,"-")[[1]][1],";tar -xvf ",bcftools ," --strip 1 --directory ", strsplit(bcftools,"-")[[1]][1]))
+  system(paste0("mkdir ",strsplit(htslib,"-")[[1]][1],";tar -xvf ",htslib ," --strip 1 --directory ", strsplit(htslib,"-")[[1]][1]))
 
   system(paste0("cd ",strsplit(bcftools,"-")[[1]][1],"; ./configure --prefix=",
   strsplit(bcftools,"-")[[1]][1],"/bin",";make;make install"))
 
   system(paste0("cd ",strsplit(htslib,"-")[[1]][1],"; ./configure --prefix=",
   strsplit(htslib,"-")[[1]][1],"/bin",";make;make install"))
+
+  system(paste0("cd ",strsplit(bcftools,"-")[[1]][1],"; ./configure --prefix=",
+  strsplit(bcftools,"-")[[1]][1],"/bin",";make;make install"))
+
+  system(paste0("cd ",strsplit(vep,"-")[[1]][1],"; ./perl INSTALL.pl"))
 
 }
