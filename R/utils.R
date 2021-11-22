@@ -197,11 +197,13 @@ install_tools=function(){
   bcftools=system.file("tools","bcftools-1.14.tar.bz2", package = "RandomCode")
   htslib=system.file("tools","htslib-1.14.tar.bz2", package = "RandomCode")
   vep=system.file("tools","ensembl-vep-release-104.3.tar.gz", package = "RandomCode")
-  
+
   system(paste0("mkdir ",strsplit(strelka,"-")[[1]][1],";tar -xvf ",strelka ," --strip 1 --directory ", strsplit(strelka,"-")[[1]][1]))
   system(paste0("mkdir ",strsplit(manta,"-")[[1]][1],";tar -xvf ",manta ," --strip 1 --directory ", strsplit(manta,"-")[[1]][1]))
   system(paste0("mkdir ",strsplit(bcftools,"-")[[1]][1],";tar -xvf ",bcftools ," --strip 1 --directory ", strsplit(bcftools,"-")[[1]][1]))
   system(paste0("mkdir ",strsplit(htslib,"-")[[1]][1],";tar -xvf ",htslib ," --strip 1 --directory ", strsplit(htslib,"-")[[1]][1]))
+  system(paste0("mkdir ",strsplit(vep,"-")[[1]][1],";tar -xvf ",vep ," --strip 1 --directory ", strsplit(vep,"-")[[1]][1]))
+
 
   system(paste0("cd ",strsplit(bcftools,"-")[[1]][1],"; ./configure --prefix=",
   strsplit(bcftools,"-")[[1]][1],"/bin",";make;make install"))
