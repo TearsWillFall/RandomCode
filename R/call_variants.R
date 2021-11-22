@@ -188,3 +188,58 @@ patient_id="",verbose=FALSE,targeted=FALSE,threads=3,exec_options="local"){
     system(paste("mv",paste0(out_file_dir,"/results/variants/somatic.indel*"),paste0(out_file_dir,"/results/variants/INDELs")))
   }
 }
+
+
+
+
+
+#' Predict variant effect using VEP
+#'
+#' This function predicts the effect of variant found in a VCF file
+#'
+#' @param bin_path Path to bcftools binary. Default tools/ensembl-vep/vep.
+#' @param bin_path2 Path to bgzip binary. Default tools/htslib/bgzip.
+#' @param bin_path3 Path to bgzip binary. Default tools/htslib/tabix.
+#' @param vcf Path to vcf file.
+#' @param output_name Name used for output files. If not given the vcf file name will be used
+#' @param output_dir Path to the output directory.
+#' @param verbose Enables progress messages. Default False.
+#' @param threads Number of threads to use. Default 3.
+#' @export
+
+
+
+call_vep=function(bin_path=system.file("tools/ensembl",
+"vep", package = "RandomCode"),bin_path2=system.file("tools/htslib",
+"bgzip", package = "RandomCode"),bin_path3=system.file("tools/htslib",
+"htslib", package = "RandomCode"),vcf="",output_name="",verbose=FALSE,
+output_dir="",threads=3){
+
+  sep="/"
+  if(output_dir==""){
+    sep=""
+  }
+  if (output_name==""){
+      sample_name=get_sample_name(vcf)
+  }else{
+    sample_name=output_name
+  }
+
+
+  out_file_dir=paste0(output_dir,sep,sample_name,"_VEP")
+  if (!dir.exists(out_file_dir)){
+      dir.create(out_file_dir)
+  }
+
+  out_file=paste0(out_file_dir,"/",sample_name,".VEP.vcf")
+
+  if(verbose){
+    print(paste(bin_path,"-i",vcf,"-o",out_file,"--cache --port 3337 --everything --force_overwrite --vcf --fork",threads))
+  }
+  system(paste(bin_path,"-i",vcf,"-o",out_file,"--cache --port 3337 --everything --force_overwrite --vcf --fork",threads))
+  system(paste("cp", out_file, paste0(out_file,".tmp")))
+  bgzip(bin_path=bin_path2,file=out_file)
+  tab_indx(bin_path=bin_path3,file=paste0(out_file,".gz"))
+  system(paste("cp", paste0(out_file,".tmp"), out_file))
+  system(paste("rm -rf", paste0(out_file,".tmp")))
+}

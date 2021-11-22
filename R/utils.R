@@ -191,7 +191,6 @@ package = "RandomCode"),file="",verbose=FALSE){
 
 install_tools=function(){
 
-
   strelka=system.file("tools","strelka-2.9.10.centos6_x86_64.tar.bz2", package = "RandomCode")
   manta=system.file("tools","manta-1.6.0.centos6_x86_64.tar.bz2", package = "RandomCode")
   bcftools=system.file("tools","bcftools-1.14.tar.bz2", package = "RandomCode")
